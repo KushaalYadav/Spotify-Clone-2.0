@@ -12,11 +12,11 @@ const CountryTracks = () => {
   const { data, isFetching, error } = useGetSongsByCountryQuery(country);
 
   useEffect(() => {
-    axios.get('https://ipapi.co/json/')
+    axios.get('https://geo.ipify.org/api/v2/country?apiKey=at_G2NZaKhgeQJzWReboXFrEDOUOaKwG&ipAddress=8.8.8.8')
       .then((res) => setCountry(res.data.country))
       .catch((err) => console.error('Geo API failed:', err))
       .finally(() => setLoading(false));
-  }, []);
+  }, [country]);
   
 
   if (isFetching && loading) return <Loader title="Loading Songs around you..." />;
